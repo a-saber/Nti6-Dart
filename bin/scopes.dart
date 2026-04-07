@@ -6,6 +6,8 @@ void main(){ // main Scope
  myGlobalVariable+6;
   // Scope 1
   {
+    int x;
+
     myGlobalVariable +6;
     // Scope 1.1
     {
@@ -16,6 +18,7 @@ void main(){ // main Scope
 
   // Scope 2
   {
+    int x;
      myGlobalVariable=5;
 
     
