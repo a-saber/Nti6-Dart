@@ -1,0 +1,37 @@
+class Book {
+  String? title;
+  String? author;
+  int? _pages;
+
+  int? getPages()=> _pages;
+  // getter for _pages
+  int? get pages => _pages;
+  void setPages(int pages){
+    if(pages>0) _pages = pages;
+  }
+  // setter for _pages
+  set pages(int? pages) {
+    if (pages != null && pages > 0) {
+      _pages = pages;
+    }
+  }
+
+  void display(){
+    print('Title: $title, Author: $author, Pages: $_pages');
+  }
+
+  Book({required this.title, this.author, int? pages}) : _pages = pages;
+
+}
+
+void main(){
+  Book book1 = Book(title: 'Book 1');
+  book1.author;
+  book1._pages;
+  book1.title;
+
+
+  Book book2 = Book(title: "Book 2", author: "Author 2", pages: 200);
+  book1.display();
+  book2.display();
+}
