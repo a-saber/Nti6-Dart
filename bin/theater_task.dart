@@ -7,7 +7,7 @@ void main(){
 
     while(true){
         displayMenu();
-        String choice = input();
+        String choice = input(prompt: 'Enter Your Choice');
         if(choice == '1'){
             newBook();
         }
@@ -32,31 +32,41 @@ displayMenu(){
     print("press 3 to show users data");
     print("press 4 to exit");
 }
+
 String input({String? prompt}){
     String? userInput;
    do{ 
-    print('Enter input');
+    print('$prompt');
     userInput = stdin.readLineSync();
     }while(userInput == null || userInput.isEmpty);
 
     return userInput;
 }
 newBook(){
-    int row = int.tryParse(input())?? -1;
-    int col = int.tryParse(input())?? -1;
-    String name = input();
-    String phone = input();
+    int row;
+    int col;
+    bool flag = false;
+    do{
+        flag = false;
+        row = int.tryParse(input(prompt: 'Enter Row'))?? -1;
+        col = int.tryParse(input(prompt: 'Enter Col'))?? -1;
 
-    if( row <0 || row >4 || col <0 || col >4){
-        print('invalid input');
-        return;
-    }
 
-    // check if seat is available
-    if(seats[row][col]){
-        print('this seat is already booked');
-        return;
-    }
+        if( row <0 || row >4 || col <0 || col >4){
+            print('invalid input');
+            flag = true;
+            continue;
+        }
+
+        // check if seat is available
+        if(seats[row][col]){
+            print('this seat is already booked');
+            flag = true;
+        }
+    }while(flag);
+
+    String name = input(prompt: 'Enter Name');
+    String phone = input(prompt: 'Enter Phone');
 
     seats[row][col] = true;
     usersData.add({
@@ -69,11 +79,19 @@ newBook(){
 }
 showSeats(){
     print('Show Seats');
-    print(seats);
+    for(int i=0; i<seats.length; i++){
+        String row = '';
+        for(int j=0; j< seats[i].length; j++){
+            row += seats[i][j] ? 'B ' : 'E ';
+        }
+        print(row);
+    }
 }
 showUsersData(){
     print('Show Users Data');
-    print(usersData);
+   for(var user in usersData){
+       print('Seat ${user['row']}, ${user['col']} : ${user['name']} - ${user['phone']}');
+   }
 }
 
 
