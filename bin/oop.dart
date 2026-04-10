@@ -20,7 +20,9 @@ class Book {
     print('Title: $title, Author: $author, Pages: $_pages');
   }
 
-  Book({required this.title, this.author, int? pages}) : _pages = pages;
+  Book({required this.title, this.author, int? pages}) {
+    this.pages = pages;
+  }
 
 }
 
