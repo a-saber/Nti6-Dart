@@ -1,3 +1,40 @@
+class BankAccount {
+  String name;
+  int _balance = 0;
+  set balance(int balance) {
+    if(balance>0) _balance = balance;
+  }
+  int get balance => _balance;
+
+  BankAccount(this.name, int balance){
+    this.balance = balance;
+  }
+
+  deposit(int amount){
+    if(amount >0){
+      _balance += amount;
+    }
+  }
+
+  withdraw(int amount){
+    if(amount >0  && amount <= _balance){
+      _balance -= amount;
+    }
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
 class Book {
   String? title;
   String? author;
