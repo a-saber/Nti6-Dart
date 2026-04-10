@@ -1,3 +1,83 @@
+import 'dart:io';
+
+List<List<bool>> seats = List.generate(5, (index)=> List.filled(5, false));
+List<Map<String, dynamic>> usersData = [];
+void main(){
+
+
+    while(true){
+        displayMenu();
+        String choice = input();
+        if(choice == '1'){
+            newBook();
+        }
+        else if( choice == '2'){
+            showSeats();
+        }
+        else if( choice == '3'){
+            showUsersData();
+        }
+        else {
+            print("See You Back");
+            return;
+        }
+
+    }
+
+}
+displayMenu(){
+    print("Welcome To Our Theater");
+    print("press 1 to book new seat");
+    print("press 2 to show the theater seats");
+    print("press 3 to show users data");
+    print("press 4 to exit");
+}
+String input({String? prompt}){
+    String? userInput;
+   do{ 
+    print('Enter input');
+    userInput = stdin.readLineSync();
+    }while(userInput == null || userInput.isEmpty);
+
+    return userInput;
+}
+newBook(){
+    int row = int.tryParse(input())?? -1;
+    int col = int.tryParse(input())?? -1;
+    String name = input();
+    String phone = input();
+
+    if( row <0 || row >4 || col <0 || col >4){
+        print('invalid input');
+        return;
+    }
+
+    // check if seat is available
+    if(seats[row][col]){
+        print('this seat is already booked');
+        return;
+    }
+
+    seats[row][col] = true;
+    usersData.add({
+        'name': name,
+        'phone': phone,
+        'row': row,
+        'col': col
+    });
+    print('Seat Booked Successfully');
+}
+showSeats(){
+    print('Show Seats');
+    print(seats);
+}
+showUsersData(){
+    print('Show Users Data');
+    print(usersData);
+}
+
+
+
 /*
 Task: Theater Booking System
 Requirements:
