@@ -15,6 +15,13 @@ b1.deposit(500);
 b1.withdraw(100);
 print(b1.balance);
 
+
+Cart c1 = Cart();
+c1.add('Apple', 30);
+c1.add('Orange', 20);
+c1.remove('Apple', 30);
+print(c1.total);
+print(c1.items);
 }
 
 /*
@@ -29,5 +36,26 @@ withdraw
 
 /*
 
+
+*/
+
+/*
+Cart 
+- _list<String> items
+- _total
+
+add(itemName, price)
+remove(itemName, price)
+*/
+
+
+/*
+
+Student
+
+- name
+- _degree
+
+String calulateGrade() // 'A', 'B', 'C', 'D', 'F'
 
 */
