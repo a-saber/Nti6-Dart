@@ -1,7 +1,48 @@
+
+abstract class Printer {
+  void printContent(String content);
+  void printContent2(String content){
+
+  }
+}
+
+class TestPrinter implements Printer{
+  @override
+  void printContent(String content) {
+    print('Prining from test printer: $content');
+  }
+
+  @override
+  void printContent2(String content) {
+    print('Prining from test printer2: $content');
+  }
+
+}
+class NetworkPrinter extends Printer{
+
+  @override
+  void printContent(String content){
+    print('Prining from network: $content');
+  }
+
+  @override
+  void printContent2(String content){
+    print('Prining from network2: $content');
+  }
+}
+class BluetoothPrinter extends Printer{
+
+  @override
+  void printContent(String content){
+    print('Prining from bluetooth: $content');
+  }
+}
+
+
 class Person {
   String? name;
   bool? isMale;
-  Person({ this.name, this.isMale});
+  Person(this.name, this.isMale);
 
   void display(){
     print(name);
@@ -12,20 +53,32 @@ class Person {
 
 class Student extends Person{
   String? grade;
-  Student(this.grade,{ super.name, super.isMale});
+  Student(this.grade,  super.name, super.isMale);
 
   @override
   void display(){
-    super.display();
     print(grade);
+    super.display();
   }
 
 }
-void main(){
-  Student s1 = Student('A', name: 'Mo',isMale :true);
-  s1.display();
+
+class PrimaryStudent extends Student{
+  String? subject;
+  PrimaryStudent(this.subject, super.grade, super.name,super.isMale);
+
+  @override
+  void display(){
+    print(subject);
+    super.display();
+  }
 
 }
+// void main(){
+//   Student s1 = Student('A', name: 'Mo',isMale :true);
+//   s1.display();
+
+// }
 
 
 
@@ -154,3 +207,35 @@ class Book {
 //   book1.display();
 //   book2.display();
 // }
+
+
+
+class Lab{
+  String? brand;
+  int _price =0;
+  void setPrice(int price){
+    if(price > 0 ) _price = price;
+  }
+  set price(int price){
+    if(price > 0 ) _price = price;
+  }
+
+  int get price => _price;
+
+  Lab(this.brand);
+
+  void display(){
+    print('Brand: $brand');
+  }
+
+}
+void main(){
+  Lab l1 = Lab('Lenovo');
+  l1._price;
+
+
+  
+
+
+  l1.display();
+}
