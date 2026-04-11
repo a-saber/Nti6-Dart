@@ -93,3 +93,37 @@ Student
 String calulateGrade() // 'A', 'B', 'C', 'D', 'F'
 
 */
+
+
+/*
+#Animal
+- name
+- age
+
+- display
+
+#Bird 
+- canFly
+
+#Cat
+- isPet
+
+
+*/
+
+/*
+
+#Vehicle
+- brand
+- display(){}
+- makeSound();
+
+#Car extends Vehicle
+- maxSpeed
+- display(){}
+
+#Motorcycle extends Vehicle
+- hasHelmet
+- display(){}
+
+*/

@@ -1,4 +1,100 @@
 
+class Vehicle{
+  String? brand;
+  Vehicle(this.brand);
+  void display(){
+    print(brand);
+  }
+}
+
+class Car extends Vehicle{
+  int? maxSpeed;
+  Car(this.maxSpeed, super.brand);
+
+  @override
+  void display() {
+    print(maxSpeed);
+    super.display();
+  }
+}
+
+void main(){
+  Car c1 = Car(200, 'Toyota');
+  c1.display();
+}
+
+
+
+abstract class Animal{
+  String? name;
+  int? age;
+
+  Animal(this.name, this.age);
+  void display(){
+    print(name);
+    print(age);
+  }
+
+  void makeSound();
+}
+class Dog implements Animal{
+  @override
+  String? name;
+  @override
+  int? age;
+  Dog(this.name, this.age);
+
+  @override
+  void display() {
+  }
+
+  @override
+  void makeSound() {
+    print('Woof woof');
+  }
+}
+
+class Bird extends Animal{
+  bool? canFly;
+  Bird(this.canFly, super.name, super.age);
+
+  @override
+  void display() {
+    super.display();
+    print(canFly);
+  }
+
+  @override
+  void makeSound() {
+    print('Chirp chirp');
+  }
+}
+
+class Cat extends Animal{
+  bool? isPet;
+  Cat(this.isPet, super.name, super.age);
+
+  
+  @override
+  void display() {
+    super.display();
+    print(isPet);
+  }
+
+  @override
+  void makeSound() {
+    print('Meow meow');
+  }
+}
+
+
+
+
+
+
+
+
+
 abstract class Printer {
   void printContent(String content);
   void printContent2(String content){
@@ -229,13 +325,13 @@ class Lab{
   }
 
 }
-void main(){
-  Lab l1 = Lab('Lenovo');
-  l1._price;
+// void main(){
+//   Lab l1 = Lab('Lenovo');
+//   l1._price;
 
 
   
 
 
-  l1.display();
-}
+//   l1.display();
+// }
