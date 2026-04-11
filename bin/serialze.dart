@@ -4,16 +4,23 @@ void main(){
     'age': 25, 
     'isMale': true
   };
-
-  UserModel u1 = UserModel('ahmed', 25, true);
+  UserModel u1 = UserModel(map['name'], map['age'], map['isMale']);
   u1.name = map['name'];
 
-  // UserModel u2 = convert(map);
+  UserModel u2 = UserModel.fromMap(map);
+  print(u2.name);
+
+  Map<String, dynamic> taskMap = {
+    'title': 'task title', 
+    'description': 'task desc', 
+    'date': "2023-01-01"
+  };
+
+  // TasModel t1 = TaskModel.fromMap(taskMap);
+  // print(t1.title);
 
 }
-// UserModel convert(Map<String, dynamic> map){
 
-// }
 
 class UserModel{
   String? name; 
@@ -21,4 +28,10 @@ class UserModel{
   bool? isMale ;
 
   UserModel(this.name, this.age, this.isMale);
+  UserModel.fromMap(Map<String, dynamic> map){
+    name = map['name'];
+    age = map['age'];
+    isMale = map['isMale'];
+  }
 }
+
