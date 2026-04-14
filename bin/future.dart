@@ -1,11 +1,18 @@
 void main() async {
-  process1().then((value) => process2());
- 
-  process3();
+  // customerOrdering().then((v){
+  //   prepareOrder().then((v){
+  //     endOrder();
+  //   });
+  // });
+
+  await customerOrdering();
+  await prepareOrder();
+  endOrder();
+
 
 }
 
-customerOrdering()async {
+Future customerOrdering()async {
   print('start Customer Order ');
   // delay
   await Future.delayed(Duration(seconds: 2));
