@@ -1,22 +1,25 @@
 void main() async {
-  process1();
-  process2();
+  process1().then((value) => process2());
+ 
   process3();
 
 }
 
-process1() {
-  print('start Getting Data 1');
+customerOrdering()async {
+  print('start Customer Order ');
   // delay
-  print('End Getting Data 1');
+  await Future.delayed(Duration(seconds: 2));
+  print('end Customer Order ');
 }
-process2(){
-  print('Start Getting Data 2');
+prepareOrder()async{
+  print('Start Preparing Order ');
   // delay
-  print('End Getting Data 2');
+  await Future.delayed(Duration(seconds: 2));
+
+  print('End Preparing Order ');
 }
-process3(){
-  print('process 3');
+endOrder(){
+  print('End Order');
 }
 
 
