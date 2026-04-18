@@ -1,17 +1,69 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 
 void main()async{
-  newTask();
+  displayAuthMenu();
+  String authChoice = input();
+  if(authChoice == '1'){
+    String accessToken = login();
+    displayTasksMenu();
+    String taskChoice = input();
+    // if(taskChoice == '1'){
+    //   newTask(accessToken);
+    // }
+    // else if(taskChoice == '2'){
+    //   showTasks(accessToken);
+    // }
+    // else if(taskChoice == '3'){
+    //   updateTask(accessToken);
+    // }
+    // else if(taskChoice == '4'){
+    //   deleteTask(accessToken);
+    // }
+    // else{
+    //   print('Invalid');
+    // }
+  }
+  else if(authChoice == '2'){
+    register();
+  }
+  else{
+    print('Invalid');
+  }
+
+
+}
+void displayTasksMenu(){
+  print('1 New Task');
+  print('2 Show Tasks');
+  print('3 Update Task');
+  print('4 Delete Task');
+}
+String input({String? prompt}){
+    String? userInput;
+   do{ 
+    print('$prompt');
+    userInput = stdin.readLineSync();
+    }while(userInput == null || userInput.isEmpty);
+
+    return userInput;
+}
+displayAuthMenu(){
+  print('1 Login');
+  print('2 Register');
 }
 
 login()async{
   try{
+    String username = input(prompt: 'Enter Username');
+    String password = input(prompt: 'Enter Username');
     Dio dio = Dio();
     var response = await dio.post(
       'https://ntitodo-production-b847.up.railway.app/api/login',
       data: FormData.fromMap({
-        'username': 'ahmedsaber0',
-        'password': '123456'
+        'username': username,
+        'password': password
       })
     );
 
@@ -69,3 +121,28 @@ newTask()async{
   }
 
 }
+fetchWeather()async{
+  try{
+    Dio dio = Dio();
+    var result = await dio.get(
+      'https://api.openweathermap.org/data/2.5/weather',
+     queryParameters: {
+      'lat': '30.5877893',
+      'lon': '31.4818003',
+      'appid': '39ef56aa87e0f9d833e66cd9111de959'
+     }
+    );
+    print(result.data.toString());
+  }
+  catch(e){
+    
+    if(e is DioException){
+      print((e.response?.data as Map<String, dynamic>)['message']);
+    }
+    else{
+      print('error through login request: ${e.toString()}');
+    }
+  }
+
+}
+

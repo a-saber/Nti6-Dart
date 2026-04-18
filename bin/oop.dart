@@ -1,6 +1,6 @@
 
 class Vehicle{
-  String? brand;
+  String brand;
   Vehicle(this.brand);
   void display(){
     print(brand);
